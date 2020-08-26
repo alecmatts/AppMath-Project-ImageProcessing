@@ -157,8 +157,9 @@
   * `np.outer` để thực hiện phép $K_2 = (K_1)*(K_1)^T$ 
   * `np.sum` để tính tổng các phần tử trong ma trận
   * `np.subtract` để tính hiệu các phần tử trong ma trận
-  * `np.lib.stride_tricks.as_strided` ????????????????
-  * `np.einsum` ??????????????????????????????
+  * `np.lib.stride_tricks.as_strided` để lấy view từ mảng với kích thước cần thiết
+    * Hàm có được warning: Nếu việc các phân tử mảng được cấp phát không liên tục, việc lấy view bằng hàm này có thẻ gây ra lỗi và crash chương trình
+  * `np.einsum` để nhân vô hướng kernel với view được lấy ở trên *(một cách fancy hơn)*
   * `np.dstack` để gộp các kênh màu lại thành ảnh
 
 #### Hình ảnh kết quả
@@ -166,6 +167,8 @@
 * kernel size $=15$
 
 ![tiger_15_blur](tiger_15_blur.png)
+
+
 
 ---------------------------------------------------
 
@@ -182,3 +185,5 @@
   * https://stackoverflow.com
   * [Chọn sigma theo kernel](https://stackoverflow.com/questions/3149279/optimal-sigma-for-gaussian-filtering-of-an-image)
   * https://en.wikipedia.org/wiki/Gaussian_blur
+  * [numpy strides](https://stackoverflow.com/questions/53097952/how-to-understand-numpy-strides-for-layman)
+  * [numpy.einsum](https://ajcr.net/Basic-guide-to-einsum/)
