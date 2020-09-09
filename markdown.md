@@ -146,15 +146,16 @@
     * Công thức Gaussian (phân phối chuẩn): $f(x)=\frac{1}{\sqrt{2\pi}}\cdot e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}$. Ở đây $\mu=0$ và $\sigma=\frac{\text{kernel_size}-1}{6}$
     * Dàn đều giá trị từ $-\frac{\text{kernel_size}}{2}$ đến $+\frac{\text{kernel_size}}{2}$ với số điểm trong mảng là $\text{kernel_size}$
     * Tính giá trị phân phối chuẩn của mỗi phần tử của mảng trên bằng công thức Gaussian
-    * Từ kernel 1 chiều này, tạo kernel 2 chiều bằng cách nhân cho chuyển vị của nó: $K_2 = (K_1)*(K_1)^T$ 
+    * Từ kernel 1 chiều này, tạo kernel 2 chiều bằng cách: $K_2 = (K_1)^T*(K_1)$, 
+      * Chiều của ma trận kết quả: $n\cdot 1 * 1\cdot n=n\cdot n$
     * Chuẩn hóa kernel để tổng các phần tử trong kernel $= 1$ bằng cách nhân từng phần tử với nghịch đảo của tổng này
   * Tích chập từng kênh màu với kernel
     * Cắt mảng nhỏ từ mảng kênh màu lớn
-    * Nhân vô hướng giữa kernel và mảng nhỏ, trả về giá trị trung tâm của mảng nhỏ trên ảnh 
+    * Nhân vô hướng giữa kernel và mảng nhỏ, trả về giá trị phép nhân về phần tử trung tâm của mảng nhỏ trên ảnh 
   * Hợp kênh màu lại thành ảnh
 * Trong source code:
   * `np.linspace` để dàn giá trị
-  * `np.outer` để thực hiện phép $K_2 = (K_1)*(K_1)^T$ 
+  * `np.outer` để thực hiện phép $K_2 = (K_1)^T*(K_1)$ 
   * `np.sum` để tính tổng các phần tử trong ma trận
   * `np.subtract` để tính hiệu các phần tử trong ma trận
   * `np.lib.stride_tricks.as_strided` để lấy view từ mảng với kích thước cần thiết
